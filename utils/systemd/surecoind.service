@@ -1,0 +1,17 @@
+[Unit]
+Description=SureCoin Full Node
+After=network.target
+
+[Service]
+User=surecoin
+Group=surecoin
+WorkingDirectory=~
+
+Type=forking
+PIDFile=/var/run/surecoind.pid
+
+ExecStart=/usr/bin/surecoind --config-file /etc/surecoind.conf \
+    --detach --pidfile /var/run/surecoind.pid
+
+[Install]
+WantedBy=multi-user.target
